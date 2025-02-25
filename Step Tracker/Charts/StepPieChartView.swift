@@ -61,7 +61,7 @@ struct StepPieChartView: View {
                                 Text(selectedWeekDay.date.weekdayTitle)
                                     .font(.title3.bold())
                                 
-                                Text("\(selectedWeekDay.value)")
+                                Text("\(selectedWeekDay.value, format: .number.precision(.fractionLength(0)))")
                                     .fontWeight(.medium)
                                     .contentTransition(.interpolate)
                                     .foregroundStyle(.secondary)
