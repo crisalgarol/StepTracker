@@ -49,7 +49,7 @@ struct DashboardView: View {
                     StepBarChartView(selectedStat: selectedStat,
                                      chartData: hkManager.stepData)
                     
-                    StepPieChartView(chartData: ChartMath.averageWeekdayCount(for: hkManager.weightData))
+                    StepPieChartView(chartData: ChartMath.averageWeekdayCount(for: hkManager.stepData))
                 }
             }
             .onAppear {
