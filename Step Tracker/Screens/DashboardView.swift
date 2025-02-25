@@ -76,6 +76,7 @@ struct DashboardView: View {
             .task {
 //                await hkManager.addSimulatorData()
                 await hkManager.fetchStepCount()
+                ChartMath.averageWeekdayCount(for: hkManager.stepData)
 //                await hkManager.fetchWeights()
             }
             .navigationTitle("Dashboard")
