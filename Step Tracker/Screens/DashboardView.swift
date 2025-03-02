@@ -37,7 +37,7 @@ struct DashboardView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 20) {
+                VStack(spacing: 21) {
                     
                     Picker("Selected Stat", selection: $selectedStat) {
                         ForEach(HealthMetricContext.allCases) {
@@ -67,7 +67,6 @@ struct DashboardView: View {
                 await hkManager.fetchStepCount()
                 await hkManager.fetchWeights()
                 await hkManager.fetchWeightsForDifferentials()
-                ChartMath.averageDailyWeightDiffs(for: hkManager.weightDiffData)
             }
             .navigationTitle("Dashboard")
             .navigationDestination(for: HealthMetricContext.self, destination: { metric in

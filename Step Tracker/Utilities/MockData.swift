@@ -33,4 +33,16 @@ struct MockData {
         return array
     }
     
+    static var weightDifferencials: [HealthMetricModel] {
+        var array: [HealthMetricModel] = []
+        
+        for i in 0..<29 {
+            let metric = HealthMetricModel(date: Calendar.current.date(byAdding: .day, value: -i, to: .now) ?? .now,
+                                           value: .random(in: (160 + Double(i/3)...165 + Double(i/3))))
+            array.append(metric)
+        }
+        
+        return array
+    }
+    
 }
