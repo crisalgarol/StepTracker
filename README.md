@@ -1,4 +1,4 @@
-## Step & Weight Tracker Charts
+## Step & Weight Tracker - HealthKit Charts
 
 <img src=https://github.com/user-attachments/assets/62ed7bb1-9c49-4379-9385-cc6a8c439e87 width="200" height="200">
 
@@ -8,9 +8,10 @@ You can see how many steps you did by day, scroll through them and see which was
 Same happens to be with weight tracking tool, you can see in a graph how your weight behaved during the month, as well as which weekdays you had more variation on your body mass, helping to have a better understanding of your body.
 
 ### Frameworks Used
+* HealthKit
 * Swift UI
 * SwiftAlgorithms
-* HealthKit
+* SwiftCharts
 
 # Preview
 
