@@ -1,6 +1,6 @@
 ## Step & Weight Tracker Charts
 
-![health_app_icon_xcode_final](https://github.com/user-attachments/assets/62ed7bb1-9c49-4379-9385-cc6a8c439e87)
+![health_app_icon_xcode_final](https://github.com/user-attachments/assets/62ed7bb1-9c49-4379-9385-cc6a8c439e87 =250x)
 
 ## Preview
 
