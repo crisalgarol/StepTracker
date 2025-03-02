@@ -37,7 +37,7 @@ struct DashboardView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 20) {
+                VStack(spacing: 21) {
                     
                     Picker("Selected Stat", selection: $selectedStat) {
                         ForEach(HealthMetricContext.allCases) {
@@ -46,10 +46,18 @@ struct DashboardView: View {
                     }
                     .pickerStyle(.segmented)
                     
-                    StepBarChartView(selectedStat: selectedStat,
-                                     chartData: hkManager.stepData)
-                    
-                    StepPieChartView(chartData: ChartMath.averageWeekdayCount(for: hkManager.stepData))
+                    switch selectedStat {
+                    case .steps:
+                        StepBarChartView(selectedStat: selectedStat,
+                                         chartData: hkManager.stepData)
+                        
+                        StepPieChartView(chartData: ChartMath.averageWeekdayCount(for: hkManager.stepData))
+                        
+                    case .weight:
+                        WeightLineChartView(selectedStat: selectedStat, chartData: hkManager.weightData)
+                        
+                        WeightDiffBarChartView(chartData: ChartMath.averageDailyWeightDiffs(for: hkManager.weightDiffData) )
+                    }
                 }
             }
             .onAppear {
@@ -59,6 +67,7 @@ struct DashboardView: View {
 //                await hkManager.addSimulatorData()
                 await hkManager.fetchStepCount()
                 await hkManager.fetchWeights()
+                await hkManager.fetchWeightsForDifferentials()
             }
             .navigationTitle("Dashboard")
             .navigationDestination(for: HealthMetricContext.self, destination: { metric in
