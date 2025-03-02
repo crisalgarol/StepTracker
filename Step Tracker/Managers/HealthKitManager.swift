@@ -16,7 +16,7 @@ import Observation
     var stepData: [HealthMetricModel] = []
     var weightData: [HealthMetricModel] = []
     var weightDiffData: [HealthMetricModel] = []
-
+    
     func fetchStepCount() async {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: .now)
@@ -83,6 +83,28 @@ import Observation
                 HealthMetricModel(date: $0.startDate,
                                   value: $0.mostRecentQuantity()?.doubleValue(for: .pound()) ?? 0)
             }
+        } catch {
+            
+        }
+    }
+    
+    func addStepData(for date: Date, value: Double) async {
+        let stepQuantity = HKQuantity(unit: .count(), doubleValue: value)
+        let stepSample = HKQuantitySample(type: HKQuantityType(.stepCount), quantity: stepQuantity, start: date, end: date)
+        
+        do {
+            try await store.save(stepSample)
+        } catch {
+            
+        }
+    }
+    
+    func addWeightData(for date: Date, value: Double) async {
+        let weightQuantity = HKQuantity(unit: .pound(), doubleValue: value)
+        let weightSample = HKQuantitySample(type: HKQuantityType(.bodyMass), quantity: weightQuantity, start: date, end: date)
+
+        do {
+            try await store.save(weightSample)
         } catch {
             
         }
